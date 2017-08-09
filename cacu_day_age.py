@@ -41,15 +41,12 @@ def isLeapYear(year):
 
 
 def daysInMonth(year, month):
-    if month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:
-        return 31
-    elif month == 2:
-        if isLeapYear(year):
-            return 29
-        else:
-            return 28
-    elif month == 4 or month == 6 or month == 9 or month == 11:
-        return 30
+    days_in_normal_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days_in_leap_month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if isLeapYear(year):
+        return days_in_leap_month[month - 1]
+    else:
+        return days_in_normal_month[month - 1]
 
 
-print daysBetweenDates(2013, 1, 1, 2014, 1, 1)
+print daysBetweenDates(2000, 12, 31, 2001, 1, 1)
